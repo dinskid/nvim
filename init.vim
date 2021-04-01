@@ -62,7 +62,7 @@ Plug 'chemzqm/vim-jsx-improve'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'posva/vim-vue'
 
-Plug 'NLKNguyen/papercolor-theme'
+Plug 'sainnhe/gruvbox-material'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -85,8 +85,9 @@ nmap ++ <plug>NERDCommenterToggle
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Colorscheme
-set background=dark
-colorscheme PaperColor
+set termguicolors
+set background=light
+colorscheme gruvbox-material
 
 " Rainbow parentheses
 autocmd BufNewFile,BufRead *.* :RainbowParentheses
@@ -190,22 +191,14 @@ nmap <leader>gs :G<CR>
 " Terminal config
 au TermOpen * startinsert!
 
-" Competitive programming
-" Templates
-function! CPP()
-  :normal! 33j
-  :normal! zz
-endfunction
-
-au BufNewFile  *.cpp 0r ~/.config/nvim/template/template.cpp
-au BufNewFile,BufRead *.cpp :call CPP()
+" au BufNewFile  *.cpp 0r ~/.config/nvim/template/template.cpp
 au filetype c 	setlocal shiftwidth=2 expandtab!
 au filetype cpp setlocal shiftwidth=2 expandtab!
 
 " CPP Compilation
-let $CXXFLAGS='-std=c++17 -O2 -Wshadow -Wall -g -DLOCAL'
-nnoremap <F3> :!mkdir .outputs<CR><CR>
-nnoremap <F4> :vsplit<bar>:term bash -c .outputs/%<<CR>
-nnoremap <buffer> <F5> :w <bar> :vsplit <bar> :term make %< && mv %< .outputs/ && .outputs/%<<CR>
-nnoremap <buffer> <F6> :w <bar> :vsplit <bar> :term g++ -std=c++17 -O2 -Wshadow -Wall -g -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG -DLOCAL % -o %< && mv %< .outputs/ && .outputs/%<<CR>
+" let $CXXFLAGS='-std=c++17 -O2 -Wshadow -Wall -g -DLOCAL'
+" nnoremap <F3> :!mkdir .outputs<CR><CR>
+" nnoremap <F4> :vsplit<bar>:term bash -c .outputs/%<<CR>
+" nnoremap <buffer> <F5> :w <bar> :vsplit <bar> :term make %< && mv %< .outputs/ && .outputs/%<<CR>
+" nnoremap <buffer> <F6> :w <bar> :vsplit <bar> :term g++ -std=c++17 -O2 -Wshadow -Wall -g -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG -DLOCAL % -o %< && mv %< .outputs/ && .outputs/%<<CR>
 
